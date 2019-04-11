@@ -1,0 +1,89 @@
+CREATE LOGIN wellington WITH PASSWORD = 'wel@123!'		-- Criação do login
+
+					-- Deve ser liberado o acesso ao master e ao banco que sera 
+					-- disponibilizado para o usuario com o comando abaixo
+CREATE USER [well] 		
+FOR LOGIN [wellington] 
+WITH DEFAULT_SCHEMA = well; 
+
+
+create Schema well
+
+CREATE ROLE role_well AUTHORIZATION [well]
+GRANT CREATE TABLE TO role_well
+GRANT SELECT,INSERT, UPDATE,DELETE, ALTER ON SCHEMA :: well TO well;
+EXEC sp_addrolemember 'role_well', 'well'
+	
+grant alter to well 
+DENY ALTER TO WELL
+
+
+
+
+
+
+
+
+ deny alter TO role_well ON well
+
+GRANT CREATE TABLE TO well WITH ADMIN OPTION;
+
+ grant alter 
+
+ GRANT CREATE TABLE ON SCHEMA :: well TO well;
+
+ GRANT CREATE SERVICE ON well to well
+ 
+  
+-- add user to role(s) in db 
+ALTER ROLE db_owner DROP MEMBER well; 
+
+CREATE ROLE ROLE_TEST;
+
+
+-- add user to role(s) in db 
+EXEC sp_addrolemember N'well', N'well'
+
+
+
+GRANT SELECT TO well 
+
+CREATE ROLE well AUTHORIZATION [dbo]
+
+ ---- Grant access rights to a specific schema in the database
+GRANT SELECT, INSERT, UPDATE, DELETE, ALTER ON SCHEMA::well TO well
+
+
+
+
+EXEC sp_droprolemember 'role_well', 'well'
+drop role role_well
+
+
+create table well.TEST(
+ NOME varchar(200)
+)
+
+DENY ALTER  ON SCHEMA::dbo
+      TO TableSelector 
+
+--===========================================================================================
+Criar o login no master:
+
+	create LOGIN elanio WITH PASSWORD = '&lanio10'
+
+
+Criar o usuario dentro do banco desejado:
+
+	create user elanio for login elanio
+
+Dar permissao de acesso ao usuario:
+	EXEC sp_addrolemember N'db_datareader',N'elanio'
+
+
+	Obs:
+		db_datareader - > permissao somente de leitura
+		db_owner-> permissao total
+		
+		
+ALTER USER [elanio] WITH DEFAULT_SCHEMA=[elanio]
